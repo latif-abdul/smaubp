@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: Source Sans Pro, Helvetica Neue, Helvetica, Arial, sans-serif,Times New Roman;
+    font-weight: 400;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+
+.panel-body {
+    padding: 15px;
+    border: 0.5px solid;
+}
+
+.table-content{
+    border: 0.5px solid;
+    border-radius: 0;
+}
+
+.panel-body:after {
+    display: table;
+    content: " ";
+}
+
+.content-label{
+    border: 0.5px solid;
+}
+
+div {
+    display: block;
+}
+
