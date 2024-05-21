@@ -22,13 +22,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="user.html">
+                    <a href="/ekskul">
                         <i class="pe-7s-user"></i>
                         <p>Ekstrakulikuler</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="/artikel">
                         <i class="pe-7s-note2"></i>
                         <p>Artikel</p>
                     </a>

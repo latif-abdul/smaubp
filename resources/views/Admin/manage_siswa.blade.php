@@ -1,9 +1,8 @@
-@extends('app')
+@extends('Admin.app')
 @section('content')
-	<div class="container">
-<div>
+<div class="card">
 <form>
-<div>
+<div class="header">
   <h2 class="title">PENDAFTARAN SANTRI</h2>
   </div>
   <!-- <p>SELAMAT DATANG CALON GENERASI SMART QUR'ANI !</p>
@@ -149,9 +148,8 @@
                     </div>
                 </div>
             </div>
-<button type="submit" class="btn btn-primary btn-fill">Daftar</button>
+<button type="submit" class="btn btn-primary btn-fill">Simpan</button>
 </div>
 </form>
-</div>
 </div>
 @endsection

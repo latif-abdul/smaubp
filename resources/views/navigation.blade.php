@@ -13,26 +13,30 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('tentang') }}">Tentang Kami</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">Kegiatan<br>Sekolah</a>
                     </li>
-                    <li class="nav-item active">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">PPDB</a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ url('artikel') }}">Artikel</a>
                     </li>
 
-
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a href="#" class="nav-link dropdown-toggle" id="dropdownMenuLink" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             More
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                            <a class="dropdown-item" href="{{ url('ekskul') }}">Ekstrakulikuler</a>
+                            <a class="dropdown-item" href="{{ url('ekskul') }}">Tentang Kami</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ url('kontak') }}">Contact Us</a>
                         </div>
@@ -40,11 +44,11 @@
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
 
-                    <input class="form-control sm-2" type="search" placeholder="Cari Artikel" aria-label="Search">
+                    <!-- <input class="form-control sm-2" type="search" placeholder="Cari Artikel" aria-label="Search">
 
                     <button class="btn btn-primary sm-0" type="submit">
                         <i class="fas fa-search"></i>
-                    </button>
+                    </button> -->
 
                 </form>
             </div>

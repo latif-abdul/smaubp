@@ -43,7 +43,7 @@ Route::get('/form', function () {
     return view('form');
 })->name('form');
 Route::resources([ 
-    'ekskul' => EkskulController::class,
+    'admin/ekskul' => EkskulController::class,
     'admin'=> AdminController::class,
     'artikel'=> ArtikelController::class,
     'siswa_baru'=> SiswaController::class, 
