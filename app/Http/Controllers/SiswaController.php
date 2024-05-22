@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Siswa;
+use App\Models\Santris;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class SiswaController extends Controller
 {
@@ -12,8 +13,8 @@ class SiswaController extends Controller
      */
     public function index()
     {
-        $siswa = Siswa::all();
-        return view("Admin.siswa_baru", compact($siswa));
+        $siswa = Santris::all();
+        return view("Admin.siswa_baru", compact('siswa'));
     }
 
     /**
@@ -21,7 +22,8 @@ class SiswaController extends Controller
      */
     public function create()
     {
-        return view("Admin.manage_siswa");
+        $formAction = "/admin/siswa_baru";
+        return view("Admin.manage_siswa", compact(['formAction']));
     }
 
     /**
@@ -30,7 +32,7 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:siswas',
+            'email' => 'required|email|unique:santris',
             'nama_lengkap' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:OP,OL',
             'tempat_lahir' => 'required|string|max:255',
@@ -50,26 +52,33 @@ class SiswaController extends Controller
             'bukti_pembayaran' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+        // if ($validator->fails()) {
+        //     return $validator;
+        //     // return redirect()->back()
+        //     //     ->withErrors($validator)
+        //     //     ->withInput();
+        // }
+    
+        $siswa = Santris::create($request->all());
+
+        if (!Storage::exists('siswa_images')) {
+            Storage::makeDirectory('siswa_images');
         }
     
-        $siswa = Siswa::create($request->all());
-    
         if ($request->hasFile('foto')) {
-            $siswa->foto = $request->file('foto')->store('siswa_images');
+            $siswa->foto = time().'-'.$request->file('foto')->getClientOriginalName();
+            $request->file('foto')->move('uploads', $siswa->foto);
             $siswa->save();
         }
     
         if ($request->hasFile('bukti_pembayaran')) {
-            $siswa->bukti_pembayaran = $request->file('bukti_pembayaran')->store('siswa_images');
+            $siswa->bukti_pembayaran = time().'-'.$request->file('bukti_pembayaran')->getClientOriginalName();
+            $request->file('bukti_pembayaran')->move('uploads', $siswa->bukti_pembayaran);
             $siswa->save();
         }
     
-        return redirect()->route('siswa.index')
-                        ->with('success','siswa created successfully.');
+        return redirect()->back()->with('success', 'Santri created successfully')
+            ->header('Content-Type', 'text/plain');
     }
 
     /**
@@ -77,7 +86,8 @@ class SiswaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $siswa = Santris::where('id', $id)->first();
+        return view('', [$siswa]);
     }
 
     /**
@@ -85,7 +95,9 @@ class SiswaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $formAction = "/admin/siswa_baru/$id";
+        $siswa = Santris::where('id', $id)->first();
+        return view('Admin.manage_siswa', compact(['siswa', 'formAction']));
     }
 
     /**
@@ -93,7 +105,26 @@ class SiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $siswa = Santris::find($id)->update($request->all());
+
+        if (!Storage::exists('siswa_images')) {
+            Storage::makeDirectory('siswa_images');
+        }
+    
+        if ($request->hasFile('foto')) {
+            $siswa->foto = time().'-'.$request->file('foto')->getClientOriginalName();
+            $request->file('foto')->move('uploads', $siswa->foto);
+            $siswa->save();
+        }
+    
+        if ($request->hasFile('bukti_pembayaran')) {
+            $siswa->bukti_pembayaran = time().'-'.$request->file('bukti_pembayaran')->getClientOriginalName();
+            $request->file('bukti_pembayaran')->move('uploads', $siswa->bukti_pembayaran);
+            $siswa->save();
+        }
+    
+        return redirect()->back()->with('success', 'Santri created successfully')
+            ->header('Content-Type', 'text/plain');
     }
 
     /**

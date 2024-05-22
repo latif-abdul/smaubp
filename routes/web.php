@@ -43,11 +43,11 @@ Route::get('/form', function () {
     return view('form');
 })->name('form');
 Route::resources([ 
+    'admin/contact'=> ContactController::class,
+    'admin/artikel'=> ArtikelController::class,
+    'admin/siswa_baru'=> SiswaController::class, 
     'admin/ekskul' => EkskulController::class,
     'admin'=> AdminController::class,
-    'artikel'=> ArtikelController::class,
-    'siswa_baru'=> SiswaController::class, 
-    'contact'=> ContactController::class,
 ]);
 
 

@@ -1,10 +1,11 @@
 @extends('app')
 @section('content')
-	<div class="container">
+<div class="container">
 <div>
-<form>
+<form method="POST" action="/admin/siswa_baru" enctype="multipart/form-data">
+@csrf
 <div>
-  <h2 class="title">PENDAFTARAN SANTRI</h2>
+  <h2>PENDAFTARAN SANTRI</h2>
   </div>
   <!-- <p>SELAMAT DATANG CALON GENERASI SMART QUR'ANI !</p>
   
@@ -16,12 +17,12 @@
   <div class="content">
   <div class="form-group">
     <label for="email">Email *</label>
-    <input type="email" id="email" class="form-control"  required>
+    <input type="email" id="email" class="form-control" name="email" required>
   </div>
   
   <div class="form-group">
     <label for="nama_lengkap">Nama Lengkap (kapital dan tanpa disingkat) *</label>
-    <input type="text" id="nama_lengkap" class="form-control"  required>
+    <input type="text" id="nama_lengkap" class="form-control" name="nama_lengkap"  required>
   </div>
   
   <div class="form-group">
@@ -36,39 +37,39 @@
     <div class="col-md-6">
   <div class="form-group">
     <label for="tempat_lahir">Tempat Lahir *</label>
-    <input type="text" id="tempat_lahir" class="form-control"  required>
+    <input type="text" id="tempat_lahir" class="form-control" name="tempat_lahir" required>
   </div>
   </div>
   
   <div class="col-md-6">
   <div class="form-group">
     <label for="tanggal_lahir">Tanggal Lahir *</label>
-    <input type="date" id="tanggal_lahir" class="form-control"  required>
+    <input type="date" id="tanggal_lahir" class="form-control" name="tanggal_lahir" required>
   </div>
   </div>
   </div>
   
   <div class="form-group">
     <label for="asal_sekolah">Asal Sekolah *</label>
-    <input type="text" id="asal_sekolah" class="form-control"  required>
+    <input type="text" id="asal_sekolah" class="form-control" name="asal_sekolah" required>
   </div>
   
   <div class="form-group">
     <label for="alamat_sekolah">Alamat Sekolah *</label>
-    <input type="text" id="alamat_sekolah" class="form-control"  required>
+    <input type="text" id="alamat_sekolah" class="form-control" name="alamat_sekolah" required>
   </div>
   <div class="row">
     <div class="col-md-6">
   <div class="form-group">
     <label for="nama_ayah">Nama Ayah/ Wali *</label>
-    <input type="text" id="nama_ayah" class="form-control"  required>
+    <input type="text" id="nama_ayah" class="form-control" name="nama_ayah" required>
   </div>
   </div>
   
   <div class="col-md-6">
   <div class="form-group">
     <label for="nama_ibu">Nama Ibu *</label>
-    <input type="text" id="nama_ibu" class="form-control"  required>
+    <input type="text" id="nama_ibu" class="form-control" name="nama_ibu" required>
   </div>
   </div>
   </div>
@@ -77,14 +78,14 @@
   <div class="col-md-6">
   <div class="form-group">
     <label for="nomor_hp_ayah">Nomor HP Ayah/ Wali *</label>
-    <input type="tel" id="nomor_hp_ayah" class="form-control"  required>
+    <input type="tel" id="nomor_hp_ayah" class="form-control" name="nomor_hp_ayah" required>
   </div>
   </div>
   
   <div class="col-md-6">
   <div class="form-group">
     <label for="nomor_hp_ibu">Nomor HP Ibu *</label>
-    <input type="tel" id="nomor_hp_ibu" class="form-control"  required>
+    <input type="tel" id="nomor_hp_ibu" class="form-control" name="nomor_hp_ibu" required>
   </div>
   </div>
   </div>
@@ -93,13 +94,13 @@
   <div class="col-md-6">
   <div class="form-group">
     <label for="pekerjaan_ayah">Pekerjaan Ayah/ Wali *</label>
-    <input type="text" id="pekerjaan_ayah" class="form-control"  required>
+    <input type="text" id="pekerjaan_ayah" class="form-control" name="pekerjaan_ayah" required>
   </div>
   </div>
   <div class="col-md-6">
   <div class="form-group">
     <label for="pekerjaan_ibu">Pekerjaan Ibu *</label>
-    <input type="text" id="pekerjaan_ibu" class="form-control"  required>
+    <input type="text" id="pekerjaan_ibu" class="form-control" name="pekerjaan_ibu" required>
 </div>
 </div>
 
@@ -108,7 +109,7 @@
 <div class="col-md-6">
 <div class="form-group">
 <label for="penghasilan_ayah">Penghasilan Ayah *</label>
-<select id="penghasilan_ayah" class="form-control" required>
+<select id="penghasilan_ayah" class="form-control" name="penghasilan_ayah" required>
           <option value="0-1.000.000">0-1.000.000</option>
           <option value="1.000.000-3.000.000">1.000.000-3.000.000</option>
           <option value="3.000.000-6.000.000">3.000.000-6.000.000</option>
@@ -120,7 +121,7 @@
         <div class="col-md-6">
 <div class="form-group">
 <label for="penghasilan_ibu">Penghasilan Ibu *</label>
-<select id="penghasilan_ibu" class="form-control" required>
+<select id="penghasilan_ibu" class="form-control" name="penghasilan_ibu" required>
           <option value="0-1.000.000">0-1.000.000</option>
           <option value="1.000.000-3.000.000">1.000.000-3.000.000</option>
           <option value="3.000.000-6.000.000">3.000.000-6.000.000</option>
@@ -137,19 +138,19 @@
   </div>
   <div class="row">
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="file-field">
                         <label>Foto</label>
                         <input type="file" class="form-control" name="foto">
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="file-field">
                         <label>Bukti Pembayaran</label>
                         <input type="file" class="form-control" name="bukti_pembayaran">
                     </div>
                 </div>
             </div>
-<button type="submit" class="btn btn-primary btn-fill">Daftar</button>
+<button type="submit" class="btn btn-primary btn-fill">Simpan</button>
 </div>
 </form>
 </div>
