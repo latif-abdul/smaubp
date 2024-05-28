@@ -22,7 +22,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">PPDB</a>
+                        <a class="nav-link" href="{{ url('ppdb') }}">PPDB</a>
                     </li>
 
                     <li class="nav-item">

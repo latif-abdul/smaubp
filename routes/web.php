@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,15 +40,33 @@ Route::get('/ektra', function () {
 Route::get('/kontak', function () {
     return view('kontak');
 })->name('kontak');
+Route::get('/ppdb', function () {
+    return view('ppdb');
+})->name('kontak');
 Route::get('/form', function () {
     return view('form');
 })->name('form');
-Route::resources([ 
-    'admin/contact'=> ContactController::class,
-    'admin/artikel'=> ArtikelController::class,
-    'admin/siswa_baru'=> SiswaController::class, 
-    'admin/ekskul' => EkskulController::class,
-    'admin'=> AdminController::class,
-]);
+Route::get('/pengumuman', function () {
+    return view('pengumuman');
+})->name('pengumuman');
 
 
+Auth::routes();
+
+Route::group( ['middleware' => 'auth' ], function()
+{
+    Route::resources([ 
+        'admin/contact'=> ContactController::class,
+        'admin/artikel'=> ArtikelController::class,
+        'admin/siswa_baru'=> SiswaController::class, 
+        'admin/ekskul' => EkskulController::class,
+        'admin'=> AdminController::class,
+    ]);
+    Route::get('/admin/siswa_baru/redirectToWhatsapp/{id}', [SiswaController::class, 'redirectToWhatsapp']);
+});
+
+
+Route::get('/', function () {
+    return view('index');
+});
+Route::get('/home', [HomeController::class, 'index'])->name('home');

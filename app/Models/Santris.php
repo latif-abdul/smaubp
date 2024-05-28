@@ -28,5 +28,7 @@ class Santris extends Model
         'jalur_masuk',
         'foto',
         'bukti_pembayaran',
+        'no_pendaftaran',
+        'status'
     ];
 }

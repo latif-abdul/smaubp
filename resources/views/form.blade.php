@@ -78,14 +78,14 @@
   <div class="col-md-6">
   <div class="form-group">
     <label for="nomor_hp_ayah">Nomor HP Ayah/ Wali *</label>
-    <input type="tel" id="nomor_hp_ayah" class="form-control" name="nomor_hp_ayah" required>
+    <input type="number" id="nomor_hp_ayah" class="form-control" name="nomor_hp_ayah" required>
   </div>
   </div>
   
   <div class="col-md-6">
   <div class="form-group">
     <label for="nomor_hp_ibu">Nomor HP Ibu *</label>
-    <input type="tel" id="nomor_hp_ibu" class="form-control" name="nomor_hp_ibu" required>
+    <input type="number" id="nomor_hp_ibu" class="form-control" name="nomor_hp_ibu" required>
   </div>
   </div>
   </div>
@@ -150,6 +150,7 @@
                     </div>
                 </div>
             </div>
+            <br>
 <button type="submit" class="btn btn-primary btn-fill">Simpan</button>
 </div>
 </form>

@@ -26,6 +26,8 @@
                                         <a class="btn btn-primary" href="/admin/siswa_baru/{{$santri->id}}/edit">Edit</a>
                                         <a class="btn btn-danger"
                                             href="/admin/siswa_baru/{{$santri->id}}/delete">Delete</a>
+                                        <a class="btn"
+                                            href="/admin/siswa_baru/redirectToWhatsapp/{{$santri->id}}">Kirim Whatsapp</a>
                                     </td>
                                 </tr>
                             @endforeach

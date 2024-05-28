@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Santris;
 use Illuminate\Support\Facades\Validator;
@@ -51,32 +52,32 @@ class SiswaController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'bukti_pembayaran' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
+
         // if ($validator->fails()) {
         //     return $validator;
         //     // return redirect()->back()
         //     //     ->withErrors($validator)
         //     //     ->withInput();
         // }
-    
+
         $siswa = Santris::create($request->all());
 
         if (!Storage::exists('siswa_images')) {
             Storage::makeDirectory('siswa_images');
         }
-    
+
         if ($request->hasFile('foto')) {
-            $siswa->foto = time().'-'.$request->file('foto')->getClientOriginalName();
+            $siswa->foto = time() . '-' . $request->file('foto')->getClientOriginalName();
             $request->file('foto')->move('uploads', $siswa->foto);
             $siswa->save();
         }
-    
+
         if ($request->hasFile('bukti_pembayaran')) {
-            $siswa->bukti_pembayaran = time().'-'.$request->file('bukti_pembayaran')->getClientOriginalName();
+            $siswa->bukti_pembayaran = time() . '-' . $request->file('bukti_pembayaran')->getClientOriginalName();
             $request->file('bukti_pembayaran')->move('uploads', $siswa->bukti_pembayaran);
             $siswa->save();
         }
-    
+
         return redirect()->back()->with('success', 'Santri created successfully')
             ->header('Content-Type', 'text/plain');
     }
@@ -110,19 +111,19 @@ class SiswaController extends Controller
         if (!Storage::exists('siswa_images')) {
             Storage::makeDirectory('siswa_images');
         }
-    
+
         if ($request->hasFile('foto')) {
-            $siswa->foto = time().'-'.$request->file('foto')->getClientOriginalName();
+            $siswa->foto = time() . '-' . $request->file('foto')->getClientOriginalName();
             $request->file('foto')->move('uploads', $siswa->foto);
             $siswa->save();
         }
-    
+
         if ($request->hasFile('bukti_pembayaran')) {
-            $siswa->bukti_pembayaran = time().'-'.$request->file('bukti_pembayaran')->getClientOriginalName();
+            $siswa->bukti_pembayaran = time() . '-' . $request->file('bukti_pembayaran')->getClientOriginalName();
             $request->file('bukti_pembayaran')->move('uploads', $siswa->bukti_pembayaran);
             $siswa->save();
         }
-    
+
         return redirect()->back()->with('success', 'Santri created successfully')
             ->header('Content-Type', 'text/plain');
     }
@@ -133,5 +134,30 @@ class SiswaController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function redirectToWhatsapp(string $id)
+    {
+        $siswa = Santris::where('id', $id)->first();
+        if ($siswa->no_pendaftaran != null) {
+            $phoneNumber = $siswa->nomor_hp_ayah; // Replace with actual phone number
+            $phoneNumber = preg_replace('/^\D+/', '', $phoneNumber);
+
+            // Check if the phone number starts with "08"
+            if (substr($phoneNumber, 0, 2) === '08') {
+                // Prepend "+62" for Indonesia country code
+                $phoneNumber = '+62' . substr($phoneNumber, 1);
+            }
+
+            $message = "No Pendaftaran :" . $siswa->no_pendaftaran . "\nNama Lengkap :" . $siswa->nama_lengkap . "\nEmail :" . $siswa->email . "\nJenis Kelamin :" . $siswa->jenis_kelamin . "\nTempat Lahir :" . $siswa->tempat_lahir . "\nTanggal Lahir :" . $siswa->tanggal_lahir . "\nAsal Sekolah :" . $siswa->asal_sekolah . "\nAlamat Sekolah :" . $siswa->alamat_sekolah . "\nNama Ayah :" . $siswa->nama_ayah . "\nNama Ibu :" . $siswa->nama_ibu . "\n"; // Replace with desired message
+
+            $encodedMessage = urlencode($message);
+            $whatsappUrl = "https://wa.me/$phoneNumber/?text=$encodedMessage";
+
+            return redirect()->away($whatsappUrl);
+        } else {
+            return response()->json(["Harap isi No Pendaftaran dahulu"]);
+        }
+        // return redirect()->away($whatsappUrl);
     }
 }

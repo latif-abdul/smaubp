@@ -66,9 +66,15 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-left pull-right">
                         <li>
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                         </li>
 						<li class="separator hidden-lg"></li>
                     </ul>
