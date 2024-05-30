@@ -16,25 +16,25 @@
 
             <ul class="nav">
                 <li>
-                    <a href="dashboard.html">
+                    <a href="#">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/ekskul">
+                    <a href="#">
                         <i class="pe-7s-user"></i>
                         <p>Ekstrakulikuler</p>
                     </a>
                 </li>
                 <li>
-                    <a href="/artikel">
+                    <a href="/admin/artikel">
                         <i class="pe-7s-note2"></i>
                         <p>Artikel</p>
                     </a>
                 </li>
                 <li>
-                    <a href="typography.html">
+                    <a href="/admin/siswa_baru">
                         <i class="pe-7s-user"></i>
                         <p>Siswa Baru</p>
                     </a>

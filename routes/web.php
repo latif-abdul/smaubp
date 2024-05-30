@@ -49,8 +49,7 @@ Route::get('/form', function () {
 Route::get('/pengumuman', function () {
     return view('pengumuman');
 })->name('pengumuman');
-
-
+Route::post('/pengumuman', [SiswaController::class, 'pengumuman']);
 Auth::routes();
 
 Route::group( ['middleware' => 'auth' ], function()

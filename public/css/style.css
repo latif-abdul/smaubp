@@ -2116,7 +2116,7 @@ p {
   font-size: 25px;
 }
 
-.alert-info {
+#successAlert {
   position: fixed;
   top: 65px;
   right: 10px;

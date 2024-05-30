@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Santris;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SiswaController extends Controller
 {
@@ -78,7 +79,7 @@ class SiswaController extends Controller
             $siswa->save();
         }
 
-        return redirect()->back()->with('success', 'Santri created successfully')
+        return back()->with('success', 'Santri created successfully')
             ->header('Content-Type', 'text/plain');
     }
 
@@ -159,5 +160,25 @@ class SiswaController extends Controller
             return response()->json(["Harap isi No Pendaftaran dahulu"]);
         }
         // return redirect()->away($whatsappUrl);
+    }
+
+    public function export_excel()
+	{
+		return Excel::download(new SiswaExport, 'siswa.xlsx');
+	}
+
+    public function pengumuman(Request $request){
+        $siswa = Santris::where('no_pendaftaran', $request->no_pendaftaran)->first();
+        if($siswa->status == 1){
+            $st = 'Selamat';
+            $color = 'success';
+            $msg = 'Selamat, '.$siswa->nama_lengkap.' Diterima'; 
+        }
+        else{
+            $st = 'Mohon Maaf';
+            $color = 'danger';
+            $msg = 'Mohon Maaf, '.$siswa->nama_lengkap.' Tidak diterima';
+        }
+        return view("pengumuman", compact(['msg', 'st', 'color']));
     }
 }

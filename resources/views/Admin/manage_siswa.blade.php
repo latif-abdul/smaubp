@@ -134,14 +134,14 @@
                     <div class="form-group">
                         <label for="penghasilan_ayah">Penghasilan Ayah *</label>
                         <select id="penghasilan_ayah" class="form-control" name="penghasilan_ayah" required>
-                            <option value="0-1.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == "0-1.000.000" ? 'selected' . '"' : '')}}}>0-1.000.000</option>
-                            <option value="1.000.000-3.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == "0-1.000.000" ? 'selected' . '"' : '')}}}>1.000.000-3.000.000
+                            <option value="0-1.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == "0-1.000.000" ? 'selected' : '')}}}>0-1.000.000</option>
+                            <option value="1.000.000-3.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == "1.000.000-3.000.000" ? 'selected' : '')}}}>1.000.000-3.000.000
                             </option>
-                            <option value="3.000.000-6.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == "3.000.000-6.000.000" ? 'selected' . '"' : '')}}}>
+                            <option value="3.000.000-6.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == "3.000.000-6.000.000" ? 'selected' : '')}}}>
                                 3.000.000-6.000.000</option>
-                            <option value="6.000.000-10.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == "6.000.000-10.000.000" ? 'selected' . '"' : '')}}}>
+                            <option value="6.000.000-10.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == "6.000.000-10.000.000" ? 'selected' : '')}}}>
                                 6.000.000-10.000.000</option>
-                            <option value=">10.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == ">10.000.000" ? 'selected' . '"' : '')}}}>> 10.000.000
+                            <option value=">10.000.000" {{{old('penghasilan_ayah', isset($siswa->penghasilan_ayah) && $siswa->penghasilan_ayah == ">10.000.000" ? 'selected' : '')}}}>> 10.000.000
                             </option>
                         </select>
                     </div>
@@ -150,15 +150,15 @@
                     <div class="form-group">
                         <label for="penghasilan_ibu">Penghasilan Ibu *</label>
                         <select id="penghasilan_ibu" class="form-control" name="penghasilan_ibu" required>
-                            <option value="0-1.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == "0-1.000.000" ? 'selected' . '"' : '')}}}>0-1.000.000</option>
-                            <option value="1.000.000-3.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == "0-1.000.000" ? 'selected' . '"' : '')}}}>
+                            <option value="0-1.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == "0-1.000.000" ? 'selected' : '')}}}>0-1.000.000</option>
+                            <option value="1.000.000-3.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == "1.000.000-3.000.000" ? 'selected' : '')}}}>
                                 1.000.000-3.000.000
                             </option>
-                            <option value="3.000.000-6.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == "3.000.000-6.000.000" ? 'selected' . '"' : '')}}}>
+                            <option value="3.000.000-6.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == "3.000.000-6.000.000" ? 'selected' : '')}}}>
                                 3.000.000-6.000.000</option>
-                            <option value="6.000.000-10.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == "6.000.000-10.000.000" ? 'selected' . '"' : '')}}}>
+                            <option value="6.000.000-10.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == "6.000.000-10.000.000" ? 'selected' : '')}}}>
                                 6.000.000-10.000.000</option>
-                            <option value=">10.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == ">10.000.000" ? 'selected' . '"' : '')}}}>> 10.000.000</option>
+                            <option value=">10.000.000" {{{old('penghasilan_ibu', isset($siswa->penghasilan_ibu) && $siswa->penghasilan_ibu == ">10.000.000" ? 'selected' : '')}}}>> 10.000.000</option>
                         </select>
                     </div>
                 </div>
@@ -210,25 +210,26 @@
                     Terverifikasi
                 </label>
             </div>
+            <div class="alert alert-success" id="successAlert" role="alert">
+                Your form has been submitted successfully!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <script>
+                const form = document.getElementById('myForm');
+                const successAlert = document.getElementById('successAlert');
+
+                form.addEventListener('submit', function (event) {
+                    $('.alert').alert();
+                    console.log('cek');
+                    setTimeout(2000);
+                    $(".alert").alert('close')
+                });
+            </script>
             <button type="submit" class="btn btn-primary btn-fill">Simpan</button>
             <a href="/admin/siswa_baru" class="btn btn-primary btn-fill">Kembali</a>
         </div>
     </form>
-
-    <!-- <div class="alert alert-info d-none hide" id="successAlert" style="position:fixed">
-        <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="false">&times;</span>
-        </button>
-        <span id="messages_content">Your form has been submitted successfully!</span>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script>
-            $('#myForm').submit(function(e) {
-                $('#successAlert').removeClass('hide').addClass('alert alert-success alert-dismissible').slideDown().show();
-                $('#messages_content').html('<h4>MESSAGE HERE</h4>');
-                $('#modal').modal('show');
-                e.preventDefault();
-            });
-        </script> -->
 </div>
 @endsection

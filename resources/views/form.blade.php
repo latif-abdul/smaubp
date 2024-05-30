@@ -151,6 +151,21 @@
                 </div>
             </div>
             <br>
+            <div class="alert alert-success" id="successAlert" role="alert">
+                Your form has been submitted successfully!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <script>
+                const form = document.getElementById('myForm');
+                const successAlert = document.getElementById('successAlert');
+
+                form.addEventListener('submit', function (event) {
+                    $('.alert').alert();
+                    console.log('cek')
+                });
+            </script>
 <button type="submit" class="btn btn-primary btn-fill">Simpan</button>
 </div>
 </form>
