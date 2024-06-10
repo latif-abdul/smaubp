@@ -210,22 +210,30 @@
                     Terverifikasi
                 </label>
             </div>
-            <div class="alert alert-success" id="successAlert" role="alert">
-                Your form has been submitted successfully!
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Saved</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <script>
                 const form = document.getElementById('myForm');
                 const successAlert = document.getElementById('successAlert');
 
-                form.addEventListener('submit', function (event) {
-                    $('.alert').alert();
-                    console.log('cek');
-                    setTimeout(2000);
-                    $(".alert").alert('close')
-                });
+                $('#myForm').on('submit', (function (e) {
+                    alert("Successfully sent to database");
+                }));
             </script>
             <button type="submit" class="btn btn-primary btn-fill">Simpan</button>
             <a href="/admin/siswa_baru" class="btn btn-primary btn-fill">Kembali</a>

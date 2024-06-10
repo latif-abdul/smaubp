@@ -28,37 +28,39 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <link href="{{url('css/pe-icon-7-stroke.css')}}" rel="stylesheet" />
 <script>
-        function addActivityField() {
-            // Get the container element for activity fields
-            var activityContainer = document.getElementById("activityContainer");
+    function addActivityField() {
+        // Get the container element for activity fields
+        var activityContainer = document.getElementById("activityContainer");
 
-            // Create a new div element for the activity field
-            var activityField = document.createElement("div");
-            activityField.className = "col-md";
+        // Create a new div element for the activity field
+        var activityField = document.createElement("div");
+        activityField.className = "col-md";
 
-            // Create an input element for the activity name
-            var input = document.createElement("input");
-            input.type = "text";
-            input.className = "form-control";
-            input.placeholder = "Kegiatan";
-            input.id = "activity"
-            input.name = "activity[]";  // Use an array name to capture multiple activities
+        // Create an input element for the activity name
+        var input = document.createElement("input");
+        input.type = "text";
+        input.className = "form-control";
+        input.placeholder = "Kegiatan";
+        input.id = "activity"
+        input.name = "activity[]";  // Use an array name to capture multiple activities
 
-            // Add the label and input to the activity field div
-            activityField.appendChild(input);
+        // Add the label and input to the activity field div
+        activityField.appendChild(input);
 
-            // Add the activity field div to the container
-            activityContainer.appendChild(activityField);
+        // Add the activity field div to the container
+        activityContainer.appendChild(activityField);
+    }
+    function removeLastActivityField() {
+        var activityContainer = document.getElementById("activityContainer");
+        if (activityContainer.children.length > 1) {
+            activityContainer.removeChild(activityContainer.lastChild);
         }
-        function removeLastActivityField() {
-            var activityContainer = document.getElementById("activityContainer");
-            if (activityContainer.children.length > 1) {
-                activityContainer.removeChild(activityContainer.lastChild);
-            }
-        }
-    </script>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    }
+</script>
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 </head>
 
 <body>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Artikel;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class ArtikelController extends Controller
 {
@@ -19,7 +22,8 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        //
+        $formAction = "/admin/artikel";
+        return view("Admin.manage_artikel", compact(['formAction']));
     }
 
     /**
@@ -27,7 +31,26 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $artikel = Artikel::create($request->all());
+
+        if (!Storage::exists('artikel_images')) {
+            Storage::makeDirectory('artikel_images');
+        }
+
+        if ($request->hasFile('gambar')) {
+            $artikel->gambar = time() . '-' . $request->file('gambar')->getClientOriginalName();
+            $request->file('gambar')->move('uploads', $artikel->gambar);
+            $artikel->save();
+        }
+
+        // if ($request->hasFile('bukti_pembayaran')) {
+        //     $artikel->bukti_pembayaran = time() . '-' . $request->file('bukti_pembayaran')->getClientOriginalName();
+        //     $request->file('bukti_pembayaran')->move('uploads', $artikel->bukti_pembayaran);
+        //     $artikel->save();
+        // }
+
+        return back()->with('success', 'Santri created successfully')
+            ->header('Content-Type', 'text/plain');
     }
 
     /**
@@ -43,7 +66,9 @@ class ArtikelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $formAction = "/admin/artikel/$id";
+        $artikel = Artikel::where('id', $id)->first();
+        return view('Admin.manage_artikel', compact(['artikel', 'formAction']));
     }
 
     /**
@@ -51,7 +76,20 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $artikel = Artikel::find($id)->update($request->all());
+
+        if (!Storage::exists('artikel_images')) {
+            Storage::makeDirectory('artikel_images');
+        }
+
+        if ($request->hasFile('gambar')) {
+            $artikel->gambar = time() . '-' . $request->file('gambar')->getClientOriginalName();
+            $request->file('gambar')->move('uploads', $artikel->gambar);
+            $artikel->save();
+        }
+
+        return redirect()->back()->with('success', 'Artikel updated successfully')
+            ->header('Content-Type', 'text/plain');
     }
 
     /**
