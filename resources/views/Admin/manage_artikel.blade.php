@@ -89,6 +89,7 @@
             <!-- Create the editor container -->
             <div id="editor">
                 {{{old('artikel', isset($artikel->artikel) ? $artikel->artikel : '')}}}
+                <p>Tes</p>
             </div>
             <br>
             <button type="submit" class="btn btn-primary btn-fill" data-toggle="modal"

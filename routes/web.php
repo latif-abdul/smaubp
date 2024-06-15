@@ -62,6 +62,7 @@ Route::group( ['middleware' => 'auth' ], function()
         'admin'=> AdminController::class,
     ]);
     Route::get('/admin/siswa_baru/redirectToWhatsapp/{id}', [SiswaController::class, 'redirectToWhatsapp']);
+    Route::put('/admin/siswa_baru/update_tanggal_pengumuman/{id}', [SiswaController::class, 'update_tanggal_pengumuman']);
 });
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use App\Models\Santris;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +17,9 @@ class SiswaController extends Controller
     public function index()
     {
         $siswa = Santris::all();
-        return view("Admin.siswa_baru", compact('siswa'));
+        $tanggal_pengumuman = Pengumuman::find("1");
+        $formAction = "/admin/siswa_baru/update_tanggal_pengumuman/1";
+        return view("Admin.siswa_baru", compact('siswa', 'tanggal_pengumuman', 'formAction'));
     }
 
     /**
@@ -180,5 +183,9 @@ class SiswaController extends Controller
             $msg = 'Mohon Maaf, '.$siswa->nama_lengkap.' Tidak diterima';
         }
         return view("pengumuman", compact(['msg', 'st', 'color']));
+    }
+
+    public function update_tanggal_pengumuman(Request $request, string $id){
+        Pengumuman::find($id)->update($request->all());
     }
 }
