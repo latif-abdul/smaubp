@@ -87,9 +87,9 @@
                 </div>
             </div>
             <!-- Create the editor container -->
-            <div id="editor">
+            <div id="editor" class="ql-editor">
                 {{{old('artikel', isset($artikel->artikel) ? $artikel->artikel : '')}}}
-                <p>Tes</p>
+                <!-- <p>tes</p> -->
             </div>
             <br>
             <button type="submit" class="btn btn-primary btn-fill" data-toggle="modal"
@@ -108,12 +108,12 @@
                 const url = '{{$formAction}}';
 
                 // $(document).ready(function () {
-                //     quill.setText("{{{old('artikel', isset($artikel->artikel) ? $artikel->artikel : '')}}}");
+                //     quill.setContent("{{{old('artikel', isset($artikel->artikel) ? $artikel->artikel : '')}}}");
                 // });
 
                 $('#myForm').on('submit', (function (e) {
                     e.preventDefault();
-                    let quillHtml = quill.root.innerHTML.trim();
+                    let quillHtml = quill.getContents();
                     let formData = new FormData(this);
                     // let artikel = quillHtml;
                     // let judul = document.getElementById("judul").value;

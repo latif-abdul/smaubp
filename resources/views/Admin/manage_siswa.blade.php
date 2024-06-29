@@ -1,7 +1,7 @@
 @extends('Admin.app')
 @section('content')
 <div class="card">
-    <form method="POST" action="{{$formAction}}" enctype="multipart/form-data" id="myForm">
+    <form method="post" action="{{$formAction}}" enctype="multipart/form-data" id="myForm">
         @if(isset($siswa)) @method('PUT') @else @method('POST') @endif
         @csrf
         <div class="header">
@@ -205,7 +205,8 @@
                 </div>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1" name="status">
+                <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1" name="status"
+                    {{{old('status', isset($siswa->status) && $siswa->status == "1" ? 'checked' : '')}}}>
                 <label class="form-check-label" for="defaultCheck1">
                     Terverifikasi
                 </label>
@@ -227,16 +228,42 @@
                     </div>
                 </div>
             </div>
-            <script>
-                const form = document.getElementById('myForm');
-                const successAlert = document.getElementById('successAlert');
 
-                $('#myForm').on('submit', (function (e) {
-                    alert("Successfully sent to database");
-                }));
-            </script>
             <button type="submit" class="btn btn-primary btn-fill">Simpan</button>
             <a href="/admin/siswa_baru" class="btn btn-primary btn-fill">Kembali</a>
+            @if (session()->has('success'))
+                <div class="alert alert-success show" id="successAlert">
+                    {{ session()->get('success') }}
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+                </div>
+            @endif
+            <!-- <script>
+                // const url = '{{$formAction}}';
+
+                $('#myForm').on('submit', (function (e) {
+                    e.preventDefault();
+                    let formData = new FormData(this);
+                    $.ajax({
+                        type: "{{{isset($siswa) ? 'PUT' : 'POST'}}}",
+                        url: '{{$formAction}}',
+                        processData: false,
+                        contentType: false,
+                        // contentType: 'multipart/form-data',
+                        cache: false,
+                        data: formData,
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader('X-CSRF-TOKEN', "{{ csrf_token() }}");
+                        },
+                        success: function (data, status, xhr) {
+                            if (xhr.status == 200) {
+                                alert("Successfully sent to database");
+                            }
+                        }, error: function () {
+                            alert("Could not send to database");
+                        }
+                    });
+                }));
+            </script> -->
         </div>
     </form>
 </div>

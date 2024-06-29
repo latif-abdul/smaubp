@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Santris;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class SiswaController extends Controller
 {
@@ -17,8 +19,8 @@ class SiswaController extends Controller
     public function index()
     {
         $siswa = Santris::all();
-        $tanggal_pengumuman = Pengumuman::find("1");
-        $formAction = "/admin/siswa_baru/update_tanggal_pengumuman/1";
+        $tanggal_pengumuman = Pengumuman::find("2");
+        $formAction = "/admin/siswa_baru/update_tanggal_pengumuman/2";
         return view("Admin.siswa_baru", compact('siswa', 'tanggal_pengumuman', 'formAction'));
     }
 
@@ -110,6 +112,7 @@ class SiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // DB::connection()->enableQueryLog();
         $siswa = Santris::find($id)->update($request->all());
 
         if (!Storage::exists('siswa_images')) {
@@ -127,8 +130,8 @@ class SiswaController extends Controller
             $request->file('bukti_pembayaran')->move('uploads', $siswa->bukti_pembayaran);
             $siswa->save();
         }
-
-        return redirect()->back()->with('success', 'Santri created successfully')
+        // return response()->json(DB::getQueryLog());
+        return redirect()->back()->with('success', 'Santri updated successfully')
             ->header('Content-Type', 'text/plain');
     }
 
@@ -166,26 +169,42 @@ class SiswaController extends Controller
     }
 
     public function export_excel()
-	{
-		return Excel::download(new SiswaExport, 'siswa.xlsx');
-	}
+    {
+        return Excel::download(new SiswaExport, 'siswa.xlsx');
+    }
 
-    public function pengumuman(Request $request){
+    public function pengumuman(Request $request)
+    {
         $siswa = Santris::where('no_pendaftaran', $request->no_pendaftaran)->first();
-        if($siswa->status == 1){
-            $st = 'Selamat';
-            $color = 'success';
-            $msg = 'Selamat, '.$siswa->nama_lengkap.' Diterima'; 
+        $pengumuman = Pengumuman::find(2);
+        if ($pengumuman->tanggal_pengumuman <= Carbon::now()) {
+            if ($siswa->status == 1) {
+                $st = 'Selamat';
+                $color = 'success';
+                $msg = 'Selamat, ' . $siswa->nama_lengkap . ' Diterima';
+            } else {
+                $st = 'Mohon Maaf';
+                $color = 'danger';
+                $msg = 'Mohon Maaf, ' . $siswa->nama_lengkap . ' Tidak diterima';
+            }
+        } else {
+            $st = '';
+            $color = 'warning';
+            $msg = 'Pengumuman akan diumumkan pada tanggal ' . date('d M Y', strtotime($pengumuman->tanggal_pengumuman));
         }
-        else{
-            $st = 'Mohon Maaf';
-            $color = 'danger';
-            $msg = 'Mohon Maaf, '.$siswa->nama_lengkap.' Tidak diterima';
-        }
+        ;
         return view("pengumuman", compact(['msg', 'st', 'color']));
     }
 
-    public function update_tanggal_pengumuman(Request $request, string $id){
-        Pengumuman::find($id)->update($request->all());
+    public function update_tanggal_pengumuman(Request $request, string $id)
+    {
+        DB::connection()->enableQueryLog();
+        $pengumuman = Pengumuman::find($id)->update($request->all());
+        $queries = DB::getQueryLog();
+        // return dd($queries);
+        // $pengumuman->save();
+        // return response()->json($request);
+        return back()->with('success', 'Successfully saved in database')
+            ->header('Content-Type', 'text/plain');
     }
 }
