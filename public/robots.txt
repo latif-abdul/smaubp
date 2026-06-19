@@ -1,0 +1,14 @@
+# SMA Unggulan Berbasis Pesantren Amanatul Ummah
+# https://smaubp-tahfidz.sch.id
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /password/
+Disallow: /storage/
+Disallow: /file_siswa/
+
+# Sitemap
+Sitemap: https://smaubp-tahfidz.sch.id/sitemap.xml
