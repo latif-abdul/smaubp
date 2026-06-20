@@ -41,7 +41,7 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
-$app->useEnvironmentPath('/../../');
+// $app->useEnvironmentPath(__DIR__.'/../..');
 
 /*
 |--------------------------------------------------------------------------
