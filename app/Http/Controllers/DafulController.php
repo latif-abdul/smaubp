@@ -96,6 +96,7 @@ class DafulController extends Controller
             $daful->foto = $santri->nama_lengkap . time() . '-' . $request->file('foto')->getClientOriginalName();
             $request->file('foto')->move('uploads', $daful->foto);
             $daful->save();
+            $santri->update(['foto' => $daful->foto]);
         }
         // }
 
