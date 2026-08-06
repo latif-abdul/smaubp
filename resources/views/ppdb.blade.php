@@ -15,7 +15,7 @@
                 BIAYA PENDIDIKAN
             </h4>
             <ol>
-                <li>Formulir pendaftaran Rp.450.000,-</li>
+                <li>Formulir pendaftaran Rp.500.000,-</li>
                 <li>Sarana prasarana Rp.8.000.000,-</li>
                 <li>Seragam Rp. 1.200.000,-</li>
                 <li>SPP per bulan Rp.2.150.000,-</li>
@@ -51,6 +51,7 @@
                     </tr> -->
                 </tbody>
             </table>
+            <p>NB : Jadwal bisa berubah sewaktu-waktu. Update Info (WA : 0823-3657-6055)</p>
             <table class="table table-bordered">
                 <thead>
                     <tr>

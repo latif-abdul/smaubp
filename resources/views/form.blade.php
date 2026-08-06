@@ -14,7 +14,7 @@
             <p>SELAMAT DATANG CALON GENERASI SMART QUR'ANI !</p>
             <div class="container">
               <ol>
-                <li>Silakan melakukan pembayaran formulir online sebesar Rp 450.000 ke rekening BSI (Bank Syariah
+                <li>Silakan melakukan pembayaran formulir online sebesar Rp 500.000 ke rekening BSI (Bank Syariah
                   Indonesia)
                   8080000139 a.n PSB SMA MA BP AMANATUL UMMAH PACET</li>
                 <li>Isikan data santri, upload bukti pembayaran dan berkas-berkas yang diperlukan.</li>
