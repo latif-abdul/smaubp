@@ -29,27 +29,29 @@
                             <div class="col-md-6">
                                 <strong>Putra</strong>
                                 <ol>
-                                    <li>Sarana Prasarana : Rp. 8.000.000,-</li>
-                                    <li>Seragam : Rp. 1.400.000,-</li>
-                                    <strong>TOTAL : Rp. 9.400.000,-</strong>
+                                    <li>Sarana Prasarana : Rp. 8.575.000,-</li>
+                                    <li>Seragam : Rp. 1.450.000,-</li>
+                                    <strong>TOTAL : Rp. 10.025.000,-</strong>
                                 </ol>
                             </div>
                             <div class="col-md-6">
                                 <strong>Putri</strong>
                                 <ol>
-                                    <li>Sarana Prasarana : Rp. 8.000.000,-</li>
-                                    <li>Seragam : Rp. 1.300.000,-</li>
-                                    <strong>TOTAL : Rp. 9.300.000,-</strong>
+                                    <li>Sarana Prasarana : Rp. 8.575.000,-</li>
+                                    <li>Seragam : Rp. 1.450.000,-</li>
+                                    <strong>TOTAL : Rp. 10.025.000,-</strong>
                                 </ol>
                             </div>
                         </div>
                         <br>
 
                         <ol>
+                            <li>Potongan Infaq Gedung Khusus Alumni sebesar 1 juta untuk calon santri dari SMP/ MTs Amaantul Ummah menjadi Rp 7.575.000</li>
                             <li>Pembayaran tunai dilayani di kantor SMAU BP Amanatul Ummah, area Gedung GBI PP. Amanatul Ummah Pacet</li>
-                            <li>Pembayaran transfer melalui rekening Bank Syari'ah Indonesia (BSI) 8080000139 atas nama PSB SMA MA BP AMANATUL UMMAH PACET</li>
-                            <li>Bukti transfer dikirim melalui WhatsApp Ustadzah Dini 0858-5199-9088</li>
+                            <li>Pembayaran non-tunai melalui rekening Bank Syari'ah Indonesia (BSI) 8080000139 atas nama PSB SMA MA BP AMANATUL UMMAH PACET</li>
+                            <li>Bukti pembayaran dikirimkan ke Ustdzah Syafa (085852226809)</li>
                             <li>Pembayaran biaya daftar ulang tidak bisa ditarik kembali</li>
+                            <li>Wajib mengisi link daftar ulang di https://forms.gle/ggCMFSABYBwbHDXY7</li>
                         </ol>
                         <br><br>
 
@@ -62,7 +64,8 @@
                             <li>Pas Foto berwarna (foto informal pose sopan)</li>
                         </ol>
                     </ol>
-                    <a href="/daful/{{ $id }}" class="btn btn-primary">Daftar Ulang</a>
+                    <!-- <a href="/daful/{{ $id }}" class="btn btn-primary">Daftar Ulang</a> -->
+                    <a href="https://forms.gle/ggCMFSABYBwbHDXY7" class="btn btn-primary">Daftar Ulang</a>
                 @endif
             @endif
         </div>
