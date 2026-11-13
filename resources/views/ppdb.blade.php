@@ -16,8 +16,8 @@
             </h4>
             <ol>
                 <li>Formulir pendaftaran Rp.500.000,-</li>
-                <li>Sarana prasarana Rp.8.000.000,-</li>
-                <li>Seragam Rp. 1.200.000,-</li>
+                <li>Gedung dan Sarana prasarana Rp.8.575.000,-</li>
+                <li>Seragam Rp. 1.450.000,-</li>
                 <li>SPP per bulan Rp.2.150.000,-</li>
             </ol>
             <hr>
