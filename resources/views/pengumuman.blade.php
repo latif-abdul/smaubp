@@ -21,7 +21,7 @@
                 </div>
                 @if($st == "Selamat")
                     <ol>
-                        <strong>Waktu daftar ulang mulai 18 – 27 Juni 2026. </strong>
+                        <strong>Waktu daftar ulang mulai 31 Oktober – 21 November 2026. </strong>
                         <br>
                         <br>
                         Rincian pembayaran:
@@ -29,7 +29,7 @@
                             <div class="col-md-6">
                                 <strong>Putra</strong>
                                 <ol>
-                                    <li>Sarana Prasarana : Rp. 8.575.000,-</li>
+                                    <li>Infaq Gedung dan Sarpras : Rp. 8.575.000,-</li>
                                     <li>Seragam : Rp. 1.450.000,-</li>
                                     <strong>TOTAL : Rp. 10.025.000,-</strong>
                                 </ol>
@@ -37,7 +37,7 @@
                             <div class="col-md-6">
                                 <strong>Putri</strong>
                                 <ol>
-                                    <li>Sarana Prasarana : Rp. 8.575.000,-</li>
+                                    <li>Infaq Gedung dan Sarpras : Rp. 8.575.000,-</li>
                                     <li>Seragam : Rp. 1.450.000,-</li>
                                     <strong>TOTAL : Rp. 10.025.000,-</strong>
                                 </ol>
